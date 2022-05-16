@@ -15,7 +15,7 @@ assets:
     type: blob.asset
     data:
       url: >-
-        https://github.com/bubblesnet/postgresql-11-block/raw/main/iceberg512x512.png
+        https://raw.githubusercontent.com/bubblesnet/postgresql-11-block/main/iceberg512x512.png
 data:
   applicationEnvironmentVariables:
   defaultDeviceType: raspberry-pi
