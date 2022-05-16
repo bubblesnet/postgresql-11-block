@@ -1,0 +1,24 @@
+name: postgres-11-block
+type: sw.block
+description: >-
+  A block that lets you drop postgres database into your balena project.
+fleetcta: Sounds good
+post-provisioning: >-
+  ## Usage instructions
+  **Usage**
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://github.com/bubblesnet/postgresql-11-block'
+  logo:
+    type: blob.asset
+    data:
+      url: >-
+        https://raw.githubusercontent.com/bubblesnet/postgresql-11-block/main/logo.png
+data:
+  applicationEnvironmentVariables:
+  defaultDeviceType: raspberry-pi
+  supportedDeviceTypes:
+    - raspberrypi3
+version: 0.0.1

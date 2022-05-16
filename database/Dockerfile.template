@@ -1,0 +1,29 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-node:16.13-buster-run
+
+RUN apt-get update
+RUN install_packages vim wget postgresql-11
+COPY postgresql.conf /etc/postgresql/11/main/postgresql.conf
+COPY pg_hba.conf /etc/postgresql/11/main/pg_hba.conf
+COPY migrations /migrations
+COPY testdata /testdata
+COPY importer_rpi3 /importer_rpi3
+COPY harvester_rpi3 /harvester_rpi3
+RUN chmod +x /importer_rpi3
+RUN chmod +x /harvester_rpi3
+COPY project_to_be_tested.csv /project_to_be_tested.csv
+COPY create_tables.sql /create_tables.sql
+# install migrate tool
+RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.1/migrate.linux-armv7.tar.gz | tar xvz
+COPY init_db.sh /
+RUN chmod +x /init_db.sh
+COPY init_db.sql /
+RUN update-rc.d postgresql enable
+
+
+# Enable udevd so that plugged dynamic hardware devices show up in our container.
+ENV UDEV=1
+
+ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+
+CMD cp /project_to_be_tested.csv /data && /etc/init.d/postgresql restart && /init_db.sh && tail -F /var/log/postgresql/postgresql-11-main.log
+# CMD ["bash"]
