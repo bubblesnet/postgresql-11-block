@@ -2,7 +2,7 @@ name: postgres-11-block
 type: sw.block
 description: >-
   A block that lets you drop postgres database into your balena project.
-fleetcta: Sounds good
+fleetcta: Works good
 post-provisioning: >-
   ## Usage instructions
   **Usage**
