@@ -1,13 +1,8 @@
 name: postgres-11-block
-type: sw.application
-# joinable: false
-
+type: sw.block
 description: >-
   A block that lets you drop postgres database into your balena project.
-fleetcta: Works good
-post-provisioning: >-
-  ## Usage instructions
-  **Usage**
+post-provisioning:
 assets:
   repository:
     type: blob.asset
