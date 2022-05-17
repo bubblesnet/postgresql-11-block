@@ -1,5 +1,5 @@
 name: postgres-11-block
-type: sw.block
+type: sw.application
 # joinable: false
 
 description: >-
