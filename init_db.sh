@@ -65,7 +65,6 @@ sudo -u postgres psql -h $ICEBREAKER_DB_HOST -p 5432 -c "SELECT pg_terminate_bac
 sudo -u postgres psql -h $ICEBREAKER_DB_HOST -p 5432 -c "DROP DATABASE IF EXISTS $ICEBREAKER_DB_NAME" "user=postgres dbname=postgres password='postgres'"
 sudo -u postgres psql -h $ICEBREAKER_DB_HOST -p 5432 -c "CREATE DATABASE $ICEBREAKER_DB_NAME" "user=postgres dbname=postgres password='postgres'"
 sudo -u postgres psql -U postgres -d icebreaker -a -f create_tables.sql
-/migrate -source file://migrations -database postgres://postgres:postgres@localhost:5432/icebreaker?sslmode=disable up
 
 echo 'Creating template database rows with init_db.sql'
 #sudo -u postgres psql -a -h $ICEBREAKER_DB_HOST -p 5432 -a -q -f init_db.sql  "user=postgres dbname=$ICEBREAKER_DB_NAME password='postgres'"

@@ -11,11 +11,13 @@ RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.1/
 #COPY init_db.sql /
 RUN update-rc.d postgresql enable
 
+COPY startserver.sh /
+RUN chmod +x /startserver.sh
 
 # Enable udevd so that plugged dynamic hardware devices show up in our container.
 ENV UDEV=1
 
 ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
-CMD /etc/init.d/postgresql restart && /init_db.sh && tail -F /var/log/postgresql/postgresql-11-main.log
-# CMD ["bash"]
+CMD ["/startserver.sh"]
+
