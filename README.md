@@ -2,7 +2,7 @@
 
 Server configuration:
 
-The block copies all the files from a shared/persistent directory named /postgresql_conf to the postgresql configuration directory.
+The block copies all the files from a shared/persistent directory named /postgresql_shared/conf to the postgresql configuration directory.
 If you want to override any of the postgresql defaults, put the entire configuration file in the shared directory.  To automate this,
 have your own container copy the configuration file to the shared directory and have postgresql DEPEND on that
 container in the dockercompose.yml file.  For example:
@@ -38,12 +38,12 @@ host    all             all             172.0.0.0/8            md5
 
 Database initialization and migration:
 
-If a file named "init_db.sh" exists in the shared directory /postgresql_conf it will be
+If a file named "init_db.sh" exists in the shared directory /postgresql_shared/bin it will be
 executed on startup AND THEN DELETED so that it will only run once.
 
 This block includes the migrate tool from https://github.com/golang-migrate.
 
-The migration tool will be run in the directory /postgresql_config/migrations to get
+The migration tool will be run in the directory /postgresql_shared/migrations to get
 the database up to the latest migration.
 
 Environment variables:
