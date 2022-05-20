@@ -5,6 +5,7 @@ then
   echo "File is found"
   chmod +x /postgresql_shared/bin/init_db.sh
   /postgresql_shared/bin/init_db.sh
+  rm /postgresql_shared/bin/init_db.sh
 else
    echo "File is not found"
 fi
