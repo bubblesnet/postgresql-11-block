@@ -2,8 +2,8 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-node:16.15-buster-run
 
 RUN apt-get update
 RUN install_packages vim wget postgresql-11
-COPY postgresql.conf /etc/postgresql/11/main/postgresql.conf
-COPY pg_hba.conf /etc/postgresql/11/main/pg_hba.conf
+COPY postgresql_sample.conf /etc/postgresql/11/main/postgresql_sample.conf
+COPY pg_hba_sample.conf /etc/postgresql/11/main/pg_hba_sample.conf
 COPY init_postgres.sh /
 RUN chmod +x /startserver.sh
 
