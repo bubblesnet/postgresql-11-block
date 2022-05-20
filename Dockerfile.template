@@ -2,10 +2,8 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-node:16.15-buster-run
 
 RUN apt-get update
 RUN install_packages vim wget postgresql-11
-COPY postgresql_sample.conf /etc/postgresql/11/main/sample_postgresql.conf
-COPY pg_hba_sample.conf /etc/postgresql/11/main/sample_pg_hba.conf
-COPY init_postgres.sh /
-RUN chmod +x /startserver.sh
+COPY sample_postgresql.conf /etc/postgresql/11/main/sample_postgresql.conf
+COPY sample_pg_hba.conf /etc/postgresql/11/main/sample_pg_hba.conf
 
 # install migrate tool
 RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.1/migrate.linux-armv7.tar.gz | tar xvz
