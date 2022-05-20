@@ -5,8 +5,6 @@ RUN install_packages vim wget postgresql-11
 COPY sample_postgresql.conf /etc/postgresql/11/main/sample_postgresql.conf
 COPY sample_pg_hba.conf /etc/postgresql/11/main/sample_pg_hba.conf
 
-# install migrate tool
-RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.1/migrate.linux-armv7.tar.gz | tar xvz
 RUN update-rc.d postgresql enable
 
 COPY startserver.sh /
