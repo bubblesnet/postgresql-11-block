@@ -6,12 +6,13 @@ cp /postgresql_shared/conf/* /etc/postgresql/11/main/
 echo "Restarting postgresql"
 /etc/init.d/postgresql restart
 
-echo "Changing postgres password to $POSTGRESQL_PASSWORD"
 string=$POSTGRESQL_PASSWORD
 len=#{$string}
-if [ $len -gt 0 ]; then
-sudo -u postgres psql -c "ALTER USER postgres PASSWORD '$POSTGRESQL_PASSWORD';"
-sudo psql -c "ALTER USER postgres PASSWORD '$POSTGRESQL_PASSWORD';"
+if [ "$len" -gt "0" ]; then
+echo "Changing postgres password because POSTGRESQL_PASSWORD env variable is set to non-zero-length string"
+sudo -U postgres psql -c "ALTER USER postgres PASSWORD '$POSTGRESQL_PASSWORD';"
+else
+echo "NOT changing postgres password because len=#{$string}"
 fi
 
 tail -F /var/log/postgresql/postgresql-11-main.log
