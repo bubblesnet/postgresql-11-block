@@ -1,5 +1,10 @@
 # postgresql-11-block
 
+Current status of this block.  I use it in one fleet and works pretty well for my purposes.
+
+You have to run the database setup and initialization and migrations from one of the other 
+containers, which means installing psql in the other container.
+
 Server configuration:
 
 The block copies all the files from a shared/persistent directory named /postgresql_shared/conf to the postgresql configuration directory.
@@ -49,3 +54,5 @@ the database up to the latest migration.
 Environment variables:
 
 * POSTGRESQL_DBNAME   set this to the name of the database we need to run migrations against
+* POSTGRESQL_HOST   set this to the name of the container that's running postgres, typically "database"
+* POSTGRESQL_PASSWORD   set this to the password for the postgres user

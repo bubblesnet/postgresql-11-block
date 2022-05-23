@@ -7,10 +7,10 @@ echo "Restarting postgresql"
 /etc/init.d/postgresql restart
 
 string=$POSTGRESQL_PASSWORD
-len=#{$string}
+len=${#string}
 if [ "$len" -gt "0" ]; then
 echo "Changing postgres password because POSTGRESQL_PASSWORD env variable is set to non-zero-length string"
-sudo -U postgres psql -c "ALTER USER postgres PASSWORD '$POSTGRESQL_PASSWORD';"
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD '$POSTGRESQL_PASSWORD';"
 else
 echo "NOT changing postgres password because len=#{$string}"
 fi
