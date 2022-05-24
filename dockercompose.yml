@@ -1,4 +1,4 @@
-version: "0.0"
+version: "0.1.2"
 
 services:
   postgresql-11-block:
@@ -14,6 +14,7 @@ services:
     restart: always
     volumes:
       - 'resin-data:/postgresql_conf'
+      - 'resin-data:/data'
     labels:
       io.balena.features.dbus: "1"
     cap_add:

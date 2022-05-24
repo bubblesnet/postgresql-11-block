@@ -4,7 +4,14 @@ echo "Copying configuration files into /etc/postgresql/11/main/"
 ls -l /postgresql_shared/conf
 cp /postgresql_shared/conf/* /etc/postgresql/11/main/
 echo "Restarting postgresql"
-/etc/init.d/postgresql restart
+# /etc/init.d/postgresql restart
+
+if [ ! -d "/data/var/lib/postgresql/11/main" ]
+then
+  sudo -u postgres /usr/lib/postgresql/11/bin/initdb -D /data/var/lib/postgresql/11/main
+fi
+
+pg_ctl -D "/data/var/lib/postgresql/11/main" -l logfile start
 
 string=$POSTGRESQL_PASSWORD
 len=${#string}
