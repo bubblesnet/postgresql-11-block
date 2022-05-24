@@ -11,7 +11,7 @@ then
   sudo -u postgres /usr/lib/postgresql/11/bin/initdb -D /data/var/lib/postgresql/11/main
 fi
 
-pg_ctl -D "/data/var/lib/postgresql/11/main" -l logfile start
+sudo -u postgres /usr/lib/postgresql/11/bin/pg_ctl -D "/data/var/lib/postgresql/11/main" -l /data/logfile start
 
 string=$POSTGRESQL_PASSWORD
 len=${#string}
