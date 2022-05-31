@@ -43,16 +43,10 @@ host    all             all             172.0.0.0/8            md5
 
 Database initialization and migration:
 
-If a file named "init_db.sh" exists in the shared directory /postgresql_shared/bin it will be
-executed on startup AND THEN DELETED so that it will only run once.
-
-This block includes the migrate tool from https://github.com/golang-migrate.
-
-The migration tool will be run in the directory /postgresql_shared/migrations to get
-the database up to the latest migration.
+All application-specific database work are the responsibility of the client container. 
 
 Environment variables:
 
-* POSTGRESQL_DBNAME   set this to the name of the database we need to run migrations against
-* POSTGRESQL_HOST   set this to the name of the container that's running postgres, typically "database"
-* POSTGRESQL_PASSWORD   set this to the password for the postgres user
+* POSTGRESQL_PASSWORD   set this to the password for the postgres user. The block resets the postgres user password to this value on startup.
+
+* 
