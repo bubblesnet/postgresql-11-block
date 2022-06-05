@@ -15,6 +15,6 @@ ENV UDEV=1
 
 ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
-# CMD ["/startserver.sh"]
-CMD ["bash"]
+CMD ["/startserver.sh"]
+# CMD ["bash"]
 
