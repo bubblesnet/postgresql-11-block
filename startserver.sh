@@ -13,10 +13,10 @@ then
   echo "${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main not exists, initing directory"
   sudo -u ${POSTGRESQL_USER} /usr/lib/postgresql/11/bin/initdb -D ${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main
 fi
-sudo mkdir -p ${POSTGRESQL_SHARED_DIRECTORY}/var/logs/postgresql
-sudo chmod 777  ${POSTGRESQL_SHARED_DIRECTORY}/var/logs/postgresql
-sudo chown -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/logs/postgresql
-sudo chgrp -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/logs/postgresql
+sudo mkdir -p ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
+sudo chmod 777  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
+sudo chown -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
+sudo chgrp -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
 
 echo Copying configuration files from ${POSTGRESQL_SHARED_DIRECTORY} into /etc/postgresql/11/main
 # sudo cp ${POSTGRESQL_SHARED_DIRECTORY}/conf/* /${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main/
