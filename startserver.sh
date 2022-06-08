@@ -13,10 +13,10 @@ then
   echo "${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main not exists, initing directory"
   sudo -u ${POSTGRESQL_USER} /usr/lib/postgresql/11/bin/initdb -D ${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main
 fi
-sudo mkdir -p ${POSTGRESQL_SHARED_DIRECTORY}/logs
-sudo chmod 777 ${POSTGRESQL_SHARED_DIRECTORY}/logs
-sudo chown -R ${POSTGRESQL_UNIX_USER} ${POSTGRESQL_SHARED_DIRECTORY}/logs
-sudo chgrp -R ${POSTGRESQL_UNIX_USER} ${POSTGRESQL_SHARED_DIRECTORY}/logs
+sudo mkdir -p ${POSTGRESQL_SHARED_DIRECTORY}/var/logs/postgresql
+sudo chmod 777  ${POSTGRESQL_SHARED_DIRECTORY}/var/logs/postgresql
+sudo chown -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/logs/postgresql
+sudo chgrp -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/logs/postgresql
 
 echo Copying configuration files from ${POSTGRESQL_SHARED_DIRECTORY} into /etc/postgresql/11/main
 # sudo cp ${POSTGRESQL_SHARED_DIRECTORY}/conf/* /${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main/
@@ -34,5 +34,5 @@ sudo -u ${POSTGRESQL_UNIX_USER} psql -c "ALTER USER postgres PASSWORD '$POSTGRES
 else
 echo "NOT changing postgres password because len=#{$string}"
 fi
-echo Tailing log file at ${POSTGRESQL_SHARED_DIRECTORY}/logs/logfile
-tail -F ${POSTGRESQL_SHARED_DIRECTORY}/logs/logfile
+echo Tailing log file at ${POSTGRESQL_SHARED_DIRECTORY}/startup.log
+tail -F ${POSTGRESQL_SHARED_DIRECTORY}/startup.log
