@@ -11,6 +11,9 @@ POSTGRESQL_UNIX_USER=postgres
 if [ ! -d "${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main" ]
 then
   echo "${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main not exists, initing directory"
+  sudo mkdir -p /${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main
+  sudo chown -R ${POSTGRESQL_UNIX_USER} ${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql
+  sudo chgrp -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
   sudo -u ${POSTGRESQL_USER} /usr/lib/postgresql/11/bin/initdb -D ${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main
 fi
 sudo mkdir -p ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
