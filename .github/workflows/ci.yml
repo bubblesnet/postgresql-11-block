@@ -21,7 +21,8 @@ jobs:
       # Performs a clean installation of ActiveMQ
       - name: "Install postgres"
         run: |
-          sudo apt-get install -y -q postgres-11 > /dev/null 2> /dev/null
+          sudo apt update
+          sudo apt-get install -y postgres-11
         working-directory: .
 
 
