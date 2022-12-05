@@ -18,4 +18,6 @@ data:
   defaultDeviceType: raspberry-pi
   supportedDeviceTypes:
     - raspberrypi3
+    - raspberrypi4-64
+    - coral-dev
 version: 0.1.1

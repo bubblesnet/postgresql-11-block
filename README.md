@@ -45,8 +45,13 @@ Database initialization and migration:
 
 All application-specific database work are the responsibility of the client container. 
 
-Environment variables:
+Environment variables user in this container:
 
-* POSTGRESQL_PASSWORD   set this to the password for the postgres user. The block resets the postgres user password to this value on startup.
+* POSTGRESQL_UNIX_USER   unix username of the user who owns/runs the postgresql processes/files, typically "postgres".  Only tested where POSTGRESQL_UNIX_USER and POSTGRESQL_POSTGRES_USER are both set to "postgres"
+* POSTGRESQL_POSTGRES_USER   POSTGRES username of the user who owns and has ALL rights within the postgresql installation, typically "postgres".
+* POSTGRESQL_POSTGRES_PASSWORD   postgres password (not unix password) for the postgres user IN POSTGRES. The block resets the postgres user password to this value on startup.
+* POSTGRESQL_SYSTEM_DBNAME   name of the system database, typically postgres
+* POSTGRESQL_SHARED_DIRECTORY   full path to root shared directory (among containers) under which postgresql container will create additional directories to run postgres, typically /postgresql_shared
 
-* 
+
+
