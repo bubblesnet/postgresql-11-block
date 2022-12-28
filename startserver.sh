@@ -21,9 +21,9 @@ sudo chmod 777  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
 sudo chown -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
 sudo chgrp -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
 
-# echo Copying configuration files from ${POSTGRESQL_SHARED_DIRECTORY} into /etc/postgresql/11/main
-# sudo cp ${POSTGRESQL_SHARED_DIRECTORY}/conf/* /${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main/
-echo SKIP Copying configuration files from ${POSTGRESQL_SHARED_DIRECTORY} into /etc/postgresql/11/main
+echo Copying configuration files from ${POSTGRESQL_SHARED_DIRECTORY} into /etc/postgresql/11/main
+sudo cp ${POSTGRESQL_SHARED_DIRECTORY}/conf/* /${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main/
+# echo SKIP Copying configuration files from ${POSTGRESQL_SHARED_DIRECTORY} into /etc/postgresql/11/main
 # sudo cp ${POSTGRESQL_SHARED_DIRECTORY}/conf/* /etc/postgresql/11/main
 
 echo Starting postgresql
