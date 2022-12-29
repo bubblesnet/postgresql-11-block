@@ -8,25 +8,26 @@ POSTGRESQL_UNIX_USER=postgres
 # echo "Restarting postgresql"
 # /etc/init.d/postgresql restart
 
-if [ ! -d "${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main" ]
-then
-  echo "${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main not exists, initing directory"
-  sudo mkdir -p /${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main
-  sudo chown -R ${POSTGRESQL_UNIX_USER} ${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql
-  sudo chgrp -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
-  sudo -u ${POSTGRESQL_UNIX_USER} /usr/lib/postgresql/11/bin/initdb -D ${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main
-fi
-sudo mkdir -p ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
-sudo chmod 777  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
-sudo chown -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
-sudo chgrp -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
+# if [ ! -d "${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main" ]
+# then
+#   echo "${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main not exists, initing directory"
+#   sudo mkdir -p /${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main
+#   sudo chown -R ${POSTGRESQL_UNIX_USER} ${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql
+#   sudo chgrp -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
+#  sudo -u ${POSTGRESQL_UNIX_USER} /usr/lib/postgresql/11/bin/initdb -D ${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main
+# fi
 
-echo Copying configuration files from ${POSTGRESQL_SHARED_DIRECTORY} into /etc/postgresql/11/main
-sudo cp ${POSTGRESQL_SHARED_DIRECTORY}/conf/* /${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main/
-# echo SKIP Copying configuration files from ${POSTGRESQL_SHARED_DIRECTORY} into /etc/postgresql/11/main
+# sudo mkdir -p ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
+# sudo chmod 777  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
+# sudo chown -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
+# sudo chgrp -R ${POSTGRESQL_UNIX_USER}  ${POSTGRESQL_SHARED_DIRECTORY}/var/log/postgresql
+
+# echo Copying configuration files from ${POSTGRESQL_SHARED_DIRECTORY} into /etc/postgresql/11/main
+# sudo cp ${POSTGRESQL_SHARED_DIRECTORY}/conf/* /${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main/
+echo SKIP Copying configuration files from ${POSTGRESQL_SHARED_DIRECTORY} into /etc/postgresql/11/main
 # sudo cp ${POSTGRESQL_SHARED_DIRECTORY}/conf/* /etc/postgresql/11/main
 
-echo Starting postgresql
+echo SKIP Starting postgresql
 # sudo -u postgres /usr/lib/postgresql/11/bin/pg_ctl -D ${POSTGRESQL_SHARED_DIRECTORY}/var/lib/postgresql/11/main -l ${POSTGRESQL_SHARED_DIRECTORY}/logs/logfile start
 sudo /etc/init.d/postgresql restart
 
